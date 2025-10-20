@@ -27,11 +27,11 @@ public class CachingBreedFetcher implements BreedFetcher {
         if (memo.containsKey(breed)) {
             return memo.get(breed);
         }
+        callsMade++;
         List<String> subBreeds = fetcher.getSubBreeds(breed);
         if (subBreeds != null) {
             memo.put(breed, subBreeds);
         }
-        callsMade++;
         return subBreeds;
     }
 
